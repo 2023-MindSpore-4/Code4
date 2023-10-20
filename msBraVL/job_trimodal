@@ -1,0 +1,22 @@
+#!/bin/bash
+
+EPOCH=100
+
+DATASET='DIR-Wiki'
+RATIO=''
+#######################################
+#  Subject 1
+#######################################
+SUBJECT='sub-01'
+FUSION="joint_elbo"
+echo $SUBJECT
+python main_trimodal.py  \
+			--end_epoch=$EPOCH \
+			--method=$FUSION \
+			--aug_type='image_text' \
+			--sbj=$SUBJECT\
+			--dataname=$DATASET \
+			--stability_ratio=$RATIO \
+			--roi='LVC_HVC_IT'\
+      --image_model='pytorch/repvgg_b3g4'\
+      --text_model='GPTNeo'
